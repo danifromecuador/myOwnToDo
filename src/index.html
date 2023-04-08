@@ -8,7 +8,22 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>hello dani</h1>
+  <h1>TODAY TODOs</h1>
+  <div class="header">
+    <input type="text" name="" id="userTaskInput">
+    <input type="button" value="add" id="addTaskBtn">
+  </div>
+
+  <ul class="tasksContainer">
+    <!-- here all the content will be added dinamically -->
+    <li class="task">
+      <input type="checkbox" name="" class="checkBox">
+      <span class="taskDescriptionText">hellooo</span>
+      <input type="button" value="save changes" class="saveEditedTaskBtn">
+      <input type="button" value="delete" class="deleteTaskBtn">
+    </li>
+  </ul>
+
   <script src="index.js"></script>
 </body>
 </html>
