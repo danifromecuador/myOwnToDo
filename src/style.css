@@ -1,7 +1,39 @@
-h1 { 
-  color: red;
+* {
+  margin: 0;
+  padding: 3px;
+  box-sizing: border-box;
+
+  border: 1px solid red;
 }
 
 body {
   background-color: rgb(172, 145, 112);
+  width: 480px;
+  margin: 0 auto;
+}
+
+hr {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#userTaskInput {
+  width: 90%;
+}
+
+.taskDescription {
+  width: 60%;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
 }
