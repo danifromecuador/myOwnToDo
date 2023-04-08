@@ -3,13 +3,11 @@
   padding: 3px;
   box-sizing: border-box;
 
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 body {
   background-color: rgb(172, 145, 112);
-  width: 480px;
-  margin: 0 auto;
 }
 
 hr {
@@ -36,4 +34,9 @@ header {
 .task {
   display: flex;
   justify-content: space-between;
+}
+
+/* DOM ////////////////////////////////////////////////////////////////// */
+.hide {
+  display: none;
 }
