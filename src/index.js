@@ -1,40 +1,22 @@
 // import _ from 'lodash';
 // import './style.css';
+import { render, add} from './modules/functions.js';
+export let tasksContainerArray = JSON.parse(localStorage.getItem('tasksContainerArray')) || [];
 
-let tasksContainerArray = [
-  {
-    completed: false,
-    description: 'task 1',
-    index: 1
-  },
-  {
-    completed: false,
-    description: 'task 2',
-    index: 1
-  },
-  {
-    completed: false,
-    description: 'task 3',
-    index: 1
+// ADD ////////////////////////////////////////////////////////////////////////////////////////////
+const addTaskBtn = document.querySelector('#addTaskBtn');
+addTaskBtn.addEventListener('click', () => {
+  let userTaskInput = document.querySelector('#userTaskInput').value;
+  add(userTaskInput);
+});
+
+const userTaskInput = document.querySelector('#userTaskInput');
+userTaskInput.addEventListener('keydown', (event) => {  
+  let userTaskInput = document.querySelector('#userTaskInput').value;
+  if (event.key === 'Enter') {
+    add(userTaskInput);
   }
-];
+});
 
-console.log(tasksContainerArray[1].description);
-
-const render = () => {
-  const tasksContainer = document.querySelector('.tasksContainer');
-  for (let i = 0; i < tasksContainerArray.length; i++) {
-    let html = `
-      <li class="task">
-        <input type="checkbox" name="" class="checkBox">
-        <span class="taskDescription">${tasksContainerArray[i].description}</span>
-        <input type="button" value="save changes" class="saveEditedTaskBtn hide">
-        <input type="button" value="delete" class="deleteTaskBtn">      
-      </li>
-      <hr>
-    `;
-    tasksContainer.innerHTML += html;
-  }
-};
-
-render();
+// RENDER WHEN THE PAGE LOADS /////////////////////////////////////////////////////////////////////
+render(tasksContainerArray);
