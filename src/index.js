@@ -1,7 +1,7 @@
-// import _ from 'lodash';
-// import './style.css';
+import _ from 'lodash';
+import './style.css';
 import {
-  render, add, remove, edit, completed,
+  render, add, remove, edit, completed, clearAllCompleted
 } from './modules/functions.js';
 
 const tasksContainerArray = JSON.parse(localStorage.getItem('tasksContainerArray')) || [];
@@ -59,6 +59,13 @@ export const checkBoxListener = () => {
     });
   });
 };
+
+// CLEAR ALL COMPLETED ////////////////////////////////////////////////////////////////////////////
+const clearAllCompletedBtn = document.querySelector('.clearAllCompletedBtn');
+clearAllCompletedBtn.addEventListener('click', () => {
+  clearAllCompleted(tasksContainerArray);
+});
+
 
 // RENDER WHEN THE PAGE LOADS /////////////////////////////////////////////////////////////////////
 render(tasksContainerArray);

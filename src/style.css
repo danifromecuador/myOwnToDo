@@ -39,6 +39,11 @@ header {
   justify-content: space-between;
 }
 
+.clearAllCompletedBtn {
+  display: flex;
+  margin: 0 auto;
+}
+
 /* DOM ////////////////////////////////////////////////////////////////// */
 .hide {
   display: none;

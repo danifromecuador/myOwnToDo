@@ -63,3 +63,14 @@ export const completed = (index, tasksContainerArray, checkBoxList) => {
   }
   render(tasksContainerArray);
 };
+
+export const clearAllCompleted = (tasksContainerArray) => {
+  for (let i = 0; i < tasksContainerArray.length; i++) {
+    if (tasksContainerArray[i].completed) {
+      tasksContainerArray.splice(i, 1);
+      i -= 1;      
+    }
+  }  
+  localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
+  render(tasksContainerArray);
+}
