@@ -7,7 +7,7 @@ export const render = (tasksContainerArray) => {
     let html = `
       <li class="task">
         <input type="checkbox" name="" class="checkBox">
-        <span class="taskDescription">${tasksContainerArray[i].description}</span>
+        <input type="text" name="" class="taskDescription" value=${tasksContainerArray[i].description}>
         <input type="button" value="save changes" class="saveEditedTaskBtn hide">
         <input type="button" value="delete" class="deleteTaskBtn">      
       </li>
