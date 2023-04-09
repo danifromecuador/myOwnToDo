@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 3px;
+  box-sizing: border-box;
+
+  /* border: 1px solid red; */
+}
+
+body {
+  background-color: rgb(172, 145, 112);
+}
+
+hr {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#userTaskInput {
+  width: 90%;
+}
+
+.taskDescription {
+  width: 60%;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clearAllCompletedBtn {
+  display: flex;
+  margin: 0 auto;
+}
+
+/* DOM ////////////////////////////////////////////////////////////////// */
+.hide {
+  display: none;
+}
+
+.checked {
+  color: gray;
+  text-decoration: line-through;
+}
