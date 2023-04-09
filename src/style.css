@@ -21,6 +21,7 @@ li {
 h1 {
   text-align: center;
 }
+
 header {
   display: flex;
   justify-content: space-between;
@@ -52,4 +53,4 @@ header {
 .checked {
   color: gray;
   text-decoration: line-through;
-} 
+}
