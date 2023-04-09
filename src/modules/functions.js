@@ -1,4 +1,4 @@
-import { deleteBtnListener } from "../index.js";
+import { deleteBtnListener, editTaskListener } from "../index.js";
 
 export const render = (tasksContainerArray) => {  
   const tasksContainer = document.querySelector('.tasksContainer');
@@ -18,6 +18,7 @@ export const render = (tasksContainerArray) => {
   }  
   localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
   deleteBtnListener();
+  editTaskListener();
 };
 
 export const add = (userInput, tasksContainerArray) => {
@@ -40,4 +41,11 @@ export const remove = (index, tasksContainerArray) => {
   tasksContainerArray.splice(index, 1);
   localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
   render(tasksContainerArray);
+};
+
+export const edit = (index, tasksContainerArray, editTaskList) => {
+  tasksContainerArray[index].description = editTaskList[index].value;
+  localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
+  // I don't want to render because if I have > 1 tasks editing,
+  // when i render,  all the save changes buttons dissapear, not only the clicked one
 };

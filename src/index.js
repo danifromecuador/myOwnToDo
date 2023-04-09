@@ -1,6 +1,6 @@
 // import _ from 'lodash';
 // import './style.css';
-import { render, add, remove } from './modules/functions.js';
+import { render, add, remove, edit } from './modules/functions.js';
 let tasksContainerArray = JSON.parse(localStorage.getItem('tasksContainerArray')) || [];
 
 // ADD ////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,6 @@ userTaskInput.addEventListener('keydown', (event) => {
 // REMOVE /////////////////////////////////////////////////////////////////////////////////////////
 export const deleteBtnListener = () => {
   const deleteTaskBtnList = document.querySelectorAll('.deleteTaskBtn');
-  const deleteTaskBtnArray = Array.from(deleteTaskBtnList);
   deleteTaskBtnList.forEach((deleteTaskBtn, index) => {
     deleteTaskBtn.addEventListener('click', () => {
       remove(index, tasksContainerArray);
@@ -30,7 +29,23 @@ export const deleteBtnListener = () => {
 };
 
 // EDIT ///////////////////////////////////////////////////////////////////////////////////////////
-
+export const editTaskListener = () => {
+  const editTaskList = document.querySelectorAll('.taskDescription');
+  const saveEditedTaskBtnList = document.querySelectorAll('.saveEditedTaskBtn');
+  editTaskList.forEach((taskDescription, index) => {
+    taskDescription.addEventListener('keydown', (event) => {
+      saveEditedTaskBtnList[index].classList.remove('hide');
+      // if(event.keyCode === 13) {        
+      // saveEditedTaskBtnList[index].classList.add('hide');      
+      // edit(index, tasksContainerArray, editTaskList);
+      // }
+      saveEditedTaskBtnList[index].addEventListener('click', () => {
+        saveEditedTaskBtnList[index].classList.add('hide');
+        edit(index, tasksContainerArray, editTaskList);
+      });
+    });
+  });
+};
 
 // RENDER WHEN THE PAGE LOADS /////////////////////////////////////////////////////////////////////
 render(tasksContainerArray);
