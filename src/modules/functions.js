@@ -1,12 +1,12 @@
-import { checkBoxListener, deleteBtnListener, editTaskListener } from "../index.js";
+import { checkBoxListener, deleteBtnListener, editTaskListener } from '../index.js';
 
-export const render = (tasksContainerArray) => {  
+export const render = (tasksContainerArray) => {
   const tasksContainer = document.querySelector('.tasksContainer');
-  tasksContainer.innerHTML = "";
-  for (let i = 0; i < tasksContainerArray.length; i++) {
-    let completed = "";
-    if (tasksContainerArray[i].completed) {completed = "checked";}
-    let html = `
+  tasksContainer.innerHTML = '';
+  for (let i = 0; i < tasksContainerArray.length; i += 1) {
+    let completed = '';
+    if (tasksContainerArray[i].completed) { completed = 'checked'; }
+    const html = `
       <li class="task">
         <input type="checkbox" name="" class="checkBox" ${completed}>
         <input type="text" name="" class="taskDescription ${completed}" value=${tasksContainerArray[i].description}>
@@ -14,10 +14,10 @@ export const render = (tasksContainerArray) => {
         <input type="button" value="delete" class="deleteTaskBtn">      
       </li>
       <hr>
-    `;    
-    tasksContainerArray[i].index = i+1;
+    `;
+    tasksContainerArray[i].index = i + 1;
     tasksContainer.innerHTML += html;
-  }  
+  }
   localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
   deleteBtnListener();
   editTaskListener();
@@ -25,15 +25,15 @@ export const render = (tasksContainerArray) => {
 };
 
 export const add = (userInput, tasksContainerArray) => {
-  if (userInput)  { // if user input is not empty so do following: 
-    let userTaskInput = document.querySelector('#userTaskInput');
+  if (userInput) { // if user input is not empty so do following:
+    const userTaskInput = document.querySelector('#userTaskInput');
     userTaskInput.value = '';
     tasksContainerArray.push(
       {
         completed: false,
         description: userInput,
-        index: tasksContainerArray.length + 1
-      }
+        index: tasksContainerArray.length + 1,
+      },
     );
     localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
     render(tasksContainerArray);
