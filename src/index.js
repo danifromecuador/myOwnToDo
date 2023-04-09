@@ -1,6 +1,6 @@
 // import _ from 'lodash';
 // import './style.css';
-import { render, add, remove, edit } from './modules/functions.js';
+import { render, add, remove, edit, completed } from './modules/functions.js';
 let tasksContainerArray = JSON.parse(localStorage.getItem('tasksContainerArray')) || [];
 
 // ADD ////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,6 +43,16 @@ export const editTaskListener = () => {
         saveEditedTaskBtnList[index].classList.add('hide');
         edit(index, tasksContainerArray, editTaskList);
       });
+    });
+  });
+};
+
+// COMPLETED //////////////////////////////////////////////////////////////////////////////////////
+export const checkBoxListener = () => {
+  const checkBoxList = document.querySelectorAll('.checkBox');
+  checkBoxList.forEach((checkBox, index) => {
+    checkBox.addEventListener('click', () => {
+      completed(index, tasksContainerArray, checkBoxList);
     });
   });
 };

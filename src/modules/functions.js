@@ -1,13 +1,15 @@
-import { deleteBtnListener, editTaskListener } from "../index.js";
+import { checkBoxListener, deleteBtnListener, editTaskListener } from "../index.js";
 
 export const render = (tasksContainerArray) => {  
   const tasksContainer = document.querySelector('.tasksContainer');
   tasksContainer.innerHTML = "";
   for (let i = 0; i < tasksContainerArray.length; i++) {
+    let completed = "";
+    if (tasksContainerArray[i].completed) {completed = "checked";}
     let html = `
       <li class="task">
-        <input type="checkbox" name="" class="checkBox">
-        <input type="text" name="" class="taskDescription" value=${tasksContainerArray[i].description}>
+        <input type="checkbox" name="" class="checkBox" ${completed}>
+        <input type="text" name="" class="taskDescription ${completed}" value=${tasksContainerArray[i].description}>
         <input type="button" value="save changes" class="saveEditedTaskBtn hide">
         <input type="button" value="delete" class="deleteTaskBtn">      
       </li>
@@ -19,6 +21,7 @@ export const render = (tasksContainerArray) => {
   localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
   deleteBtnListener();
   editTaskListener();
+  checkBoxListener();
 };
 
 export const add = (userInput, tasksContainerArray) => {
@@ -48,4 +51,15 @@ export const edit = (index, tasksContainerArray, editTaskList) => {
   localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
   // I don't want to render because if I have > 1 tasks editing,
   // when i render,  all the save changes buttons dissapear, not only the clicked one
+};
+
+export const completed = (index, tasksContainerArray, checkBoxList) => {
+  if (checkBoxList[index].checked) {
+    tasksContainerArray[index].completed = true;
+    localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
+  } else {
+    tasksContainerArray[index].completed = false;
+    localStorage.setItem('tasksContainerArray', JSON.stringify(tasksContainerArray));
+  }
+  render(tasksContainerArray);
 };

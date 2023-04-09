@@ -43,3 +43,8 @@ header {
 .hide {
   display: none;
 }
+
+.checked {
+  color: gray;
+  text-decoration: line-through;
+} 
